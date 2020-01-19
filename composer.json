@@ -1,0 +1,33 @@
+{
+    "name": "armincms/wizard",
+    "description": "The wizard form for the laravel nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "armincms",
+        "wizard",
+        "form",
+        "tool"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Armincms\\Wizard\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Armincms\\Wizard\\WizardServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
