@@ -6,8 +6,7 @@ The wizard form for the laravel nova
 
 * [Introduction](#introduction)      
 * [Installation](#installation)      
-* [Resource Configurations](#resource-configurations)  
-* [Resource Configurations](#resource-configurations)  
+* [Resource Configurations](#resource-configurations)    
 * [About Implementation](#about-implementation)  
 
 
