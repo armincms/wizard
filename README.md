@@ -131,3 +131,7 @@ calss MyResource extends Resource
 
 ```
 
+
+![wizard 1](/w1.png)
+![wizard 2](/w2.png)
+![wizard 3](/w3.png)
