@@ -19,13 +19,26 @@ class ValidateUpdateController extends Controller
         $model = $request->findModelQuery()->lockForUpdate()->firstOrFail();
 
         $resource = $request->newResourceWith($model); 
-        $resource::validateForUpdate($request, $resource);
+
+        $rules = $resource::rulesForUpdate($request, $resource);
+
+        $request->validate( collect($rules)->only($this->fields($request))->all() );
 
         if ($this->modelHasBeenUpdatedSinceRetrieval($request, $model)) {
             return response('', 409)->throwResponse();
         }
 
         return response()->json([]);
+    } 
+
+    public function fields(UpdateResourceRequest $request)
+    { 
+        return $request
+                    ->newResource()
+                    ->updateFieldsWithinPanels($request)
+                    ->where('panel', $request->viaStep)
+                    ->pluck('attribute')
+                    ->all();
     }
 
     /**

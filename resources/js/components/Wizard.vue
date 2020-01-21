@@ -152,18 +152,13 @@ export default {
     /**
      * Create the form data for creating the resource.
      */
-    validateResourceFormData() {
+    validateResourceFormData() { 
       return _.tap(new FormData(), formData => {
-        _(this.fields).filter(field => {
-          var step = _.find(this.panels, panel => panel.name === field.panel).step; 
-
-          return ! step || this.stepPassed(step);
-        }).each(field => {  
-            field.fill(formData)  
-        }) 
+        _(this.fields).each(field => {
+          field.fill(formData)
+        })
 
         formData.append('_retrieved_at', this.lastRetrievedAt)
-
       })
     },  
 

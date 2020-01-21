@@ -15,10 +15,21 @@ class ValidateStoreController extends Controller
      */
     public function handle(CreateResourceRequest $request)
     {
-        $resource = $request->resource(); 
+        $resource = $request->resource();  
+        $rules = $resource::rulesForCreation($request);
 
-        $resource::validateForCreation($request); 
-
+        $request->validate( collect($rules)->only($this->fields($request))->all() ); 
+        
         return response()->json([], 200);
+    }
+
+    public function fields(CreateResourceRequest $request)
+    { 
+        return $request
+                    ->newResource()
+                    ->creationFieldsWithinPanels($request)
+                    ->where('panel', $request->viaStep)
+                    ->pluck('attribute')
+                    ->all();
     }
 }
