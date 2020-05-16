@@ -1,3 +1,8 @@
+
+## This package is archived. please use the [Nova Wizard](https://github.com/zareismail/nova-wizard) package instead of it.
+
+
+
 # wizard
 The wizard form for the laravel nova
 
